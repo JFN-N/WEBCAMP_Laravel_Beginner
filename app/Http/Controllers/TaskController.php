@@ -218,6 +218,17 @@ var_dump($sql);
     }
 
     /**
+     * 一覧用の Illuminate\Database\Eloquent\Builder インスタンスの取得
+     */
+    protected function getListBuilder()
+    {
+        return TaskModel::where('user_id', Auth::id())
+                     ->orderBy('priority', 'DESC')
+                     ->orderBy('period')
+                     ->orderBy('created_at');
+    }
+
+    /**
      * CSV ダウンロード
      */
     public function csvDownload()
