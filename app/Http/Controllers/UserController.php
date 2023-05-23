@@ -2,22 +2,32 @@
 declare(strict_types=1);
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\TaskRegisterPostRequest;
-use App\Http\Requests\AdminLoginPostRequest;
-use Illuminate\Support\Facades\Auth;
 use App\Models\Task as TaskModel;
+
+use App\Http\Controllers\Controller;
+use App\Http\Requests\LoginPostRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Symfony\Component\HttpFoundation\StreamedResponse;
+
+use App\Http\Requests\UserRegisterPost;
 
 class UserController extends Controller
 {
 
     /**
-     * タスクの新規登録
+     * トップページ を表示する
+     *
+     * @return \Illuminate\View\View
      */
-    public function register(TaskRegisterPostRequest $request)
+    public function index()
+    {
+        return view('user/register');
+    }
+
+    /**
+     * ユーザーの新規登録
+     */
+    public function register(UserRegisterPostRequest $request)
     {
         // validate済みのデータの取得
         $datum = $request->validated();
@@ -27,7 +37,9 @@ class UserController extends Controller
         //var_dump($datum, $user, $id); exit;
 
         // user_id の追加
-        $datum['user_id'] = Auth::id();
+        $datum['email'] = User::id();
+        $datum['name'] = User::id();
+        $datum['password'] = User::id();
 
         // テーブルへのINSERT
         try {
@@ -39,10 +51,10 @@ class UserController extends Controller
         }
 
         // タスク登録成功
-        $request->session()->flash('front.task_register_success', true);
+        $request->session()->flash('front.user_register_success', true);
 
         //
-        return redirect('/task/list');
+        return redirect('index');
     }
 
 }
