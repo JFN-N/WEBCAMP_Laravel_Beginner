@@ -21,7 +21,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('user/register');
+        return view('register.index');
     }
 
     /**
@@ -54,7 +54,7 @@ class UserController extends Controller
         $request->session()->flash('front.user_register_success', true);
 
         //
-        return redirect('index');
+        return redirect('front.index');
     }
 
 }
