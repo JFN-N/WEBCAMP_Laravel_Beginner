@@ -3,8 +3,10 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+use App\Models\Task as TaskModel;
 
-class UserRegisterPost extends FormRequest
+class UserRegisterPostRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -14,9 +16,9 @@ class UserRegisterPost extends FormRequest
     public function rules()
     {
         return [
-            'email' => ['required', 'email', 'max:254'],
             'name' => ['required', 'max:128'],
-            'password' => ['required', 'max:72'],
+            'email' => ['required', 'email', 'max:254'],
+            'password' => ['required','max:72']
         ];
     }
 }

@@ -10,10 +10,10 @@
             @endforeach
             </div>
         @endif
-        <form action="/register" method="post">
+        <form action="user/register" method="post">
             @csrf
-            名前：<input name="name" value="name"><br>
-            email：<input name="email" value="email"><br>
+            名前：<input name="name"><br>
+            email：<input name="email"><br>
             パスワード：<input  name="password" type="password"><br>
             <button>登録する</button>
         </form>
