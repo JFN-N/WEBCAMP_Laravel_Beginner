@@ -15,7 +15,7 @@ class UserController extends Controller
     {
         return view('index');
     }
-
+    /*
     public function register(UserRegisterPostRequest $request)
     {
         // validate済みのデータの取得
@@ -37,4 +37,23 @@ class UserController extends Controller
         //
         //return redirect('/login');
     }
+    */
+
+
+
+    public function register(UserRegisterPostRequest $request)
+    {
+        $this -> validator($request->all())->validate();
+        event(new Registered($user = $this->create($request->all())));
+        $this->guard()->login($user);
+        return $this->registered($request, $user)
+                           ?: refirect($this->redirectPath());
+
+        // タスク登録成功
+        //$request->session()->flash('front.user_register_success', true);
+
+        //
+        //return redirect('/login');
+    }
+
 }
