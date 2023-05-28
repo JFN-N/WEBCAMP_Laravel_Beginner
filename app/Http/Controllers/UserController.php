@@ -13,7 +13,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        return view('index');
+        return view('user.register');
     }
     /*
     public function register(UserRegisterPostRequest $request)
@@ -50,10 +50,10 @@ class UserController extends Controller
                            ?: refirect($this->redirectPath());
 
         // タスク登録成功
-        //$request->session()->flash('front.user_register_success', true);
+        $request->session()->flash('front.user_register_success', true);
 
-        //
-        //return redirect('/login');
+
+        return redirect('/login');
     }
 
 }
