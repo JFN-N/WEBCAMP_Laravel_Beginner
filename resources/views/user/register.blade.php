@@ -10,7 +10,7 @@
             @endforeach
             </div>
         @endif
-        <form action="user.register" method="post">
+        <form action="/register" method="post">
             @csrf
             名前：<input name="name"><br>
             email：<input name="email"><br>
