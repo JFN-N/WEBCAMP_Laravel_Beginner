@@ -9,7 +9,9 @@ use Illuminate\Http\Request;
 
 use App\Models\User as UserModel;
 
-use App\Http\Requests\UserRegisterPostRequest;
+use App\Http\Requests\UserRegisterPost;
+
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -18,13 +20,16 @@ class UserController extends Controller
         return view('user.register');
     }
 
-    public function register(UserRegisterPostRequest $request)
+    public function register(UserRegisterPost $request)
     {
         // validate済みのデータの取得
         $datum = $request->validated();
 
-        // user_id の追加
-        $datum['user_id'] = Auth::id();
+        //$datum = $request-&gt;validated();
+
+        $datum['name'] = Hash::make($datum['name']);
+        $datum['email'] = Hash::make($datum['email']);
+        $datum['password'] = Hash::make($datum['password']);
 
         // テーブルへのINSERT
         try {
