@@ -14,7 +14,8 @@ class CreateTasksTable extends Migration
     public function up()
     {
         Schema::create('tasks', function (Blueprint $table) {
-            $table->unsignedInteger('id');
+            $table->id();
+            //$table->unsignedInteger('id');
             $table->string('name', 128)->comment('タスク名');
             $table->date('period')->comment('タスクの期限');
             $table->text('detail')->comment('タスクの詳細');
@@ -25,7 +26,7 @@ class CreateTasksTable extends Migration
             $table->dateTime('created_at')->useCurrent()->comment('タスク完了日時');
             $table->dateTime('updated_at')->useCurrent()->useCurrentOnUpdate();
             //
-            $table->primary('id');
+            //$table->primary('id');
         });
     }
 
