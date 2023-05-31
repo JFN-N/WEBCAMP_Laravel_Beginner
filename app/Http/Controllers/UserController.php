@@ -27,8 +27,8 @@ class UserController extends Controller
 
         //$datum = $request-&gt;validated();
 
-        $datum['name'] = Hash::make($datum['name']);
-        $datum['email'] = Hash::make($datum['email']);
+        //$datum['name'] = Hash::make($datum['name']);
+        //$datum['email'] = Hash::make($datum['email']);
         $datum['password'] = Hash::make($datum['password']);
 
         // テーブルへのINSERT
