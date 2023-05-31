@@ -45,8 +45,8 @@ class UserController extends Controller
         $request->session()->flash('front.user_register_success', true);
 
 
-        return redirect('/login');
-
+        //return redirect('/login');
+        return view('index');
         /*
 
         // validate済みのデータの取得
