@@ -34,7 +34,7 @@ class UserController extends Controller
         // テーブルへのINSERT
         try {
             $r = UserModel::create($datum);
-            var_dump($r); exit;
+            //var_dump($r); exit;
         } catch(\Throwable $e) {
             // XXX 本当はログに書く等の処理をする。今回は一端「出力する」だけ
             echo $e->getMessage();
