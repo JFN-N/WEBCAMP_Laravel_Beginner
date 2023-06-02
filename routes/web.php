@@ -53,6 +53,7 @@ Route::middleware(['auth'])->group(function () {
     });
     // 完了タスクリスト
     Route::get('/completed_tasks/list', [CompletedTaskController::class, 'list']);
+    Route::get('/completed_tasks', [CompletedTaskController::class, 'list']);
     //
     Route::get('/logout', [AuthController::class, 'logout']);
 });
